@@ -17,6 +17,10 @@ class TextViewTableViewCell: UITableViewCell {
         textView.isEditable = false
         textView.isSelectable = true
         textView.delegate = self
+        textView.linkTextAttributes = [
+            .foregroundColor: UIColor.black,
+            .underlineStyle: 1
+        ]
     }
 
 }
