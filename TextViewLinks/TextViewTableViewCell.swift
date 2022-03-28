@@ -16,6 +16,23 @@ class TextViewTableViewCell: UITableViewCell {
         textView.dataDetectorTypes = [.link, .phoneNumber]
         textView.isEditable = false
         textView.isSelectable = true
+        textView.delegate = self
     }
 
+}
+
+extension TextViewTableViewCell: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        switch URL.scheme {
+        case "mailto":
+            print("EMAIL ADDRESS")
+        case "tel":
+            print("PHONE NUMBER")
+        case "http":
+            print("WEBSITE")
+        default:
+            print("OTHER")
+        }
+        return false
+    }
 }
